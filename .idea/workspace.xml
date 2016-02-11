@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="053c5ba0-681a-4871-a872-4d8a6e5eb0fc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SupernaturalFanbase/app/build.gradle" afterPath="$PROJECT_DIR$/SupernaturalFanbase/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SupernaturalFanbase/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/SupernaturalFanbase/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SupernaturalFanbase/app/src/main/java/com/liokodev/supernaturalfanbase/MainActivity.java" afterPath="$PROJECT_DIR$/SupernaturalFanbase/app/src/main/java/com/liokodev/supernaturalfanbase/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SupernaturalFanbase/app/src/main/java/com/liokodev/supernaturalfanbase/showAdapter.java" afterPath="$PROJECT_DIR$/SupernaturalFanbase/app/src/main/java/com/liokodev/supernaturalfanbase/showAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SupernaturalFanbase/app/src/main/res/layout/showcard.xml" afterPath="$PROJECT_DIR$/SupernaturalFanbase/app/src/main/res/layout/showcard.xml" />
     </list>
     <ignored path="LE-Supernatural.iws" />
@@ -188,7 +189,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

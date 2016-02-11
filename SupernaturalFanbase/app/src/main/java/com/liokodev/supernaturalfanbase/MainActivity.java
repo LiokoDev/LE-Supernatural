@@ -20,6 +20,8 @@ import com.github.siyamed.shapeimageview.CircularImageView;
 
 import java.util.ArrayList;
 
+import jp.wasabeef.recyclerview.animators.adapters.SlideInLeftAnimationAdapter;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     public static ArrayList<String> showPhoto = new ArrayList<>();
     public static ArrayList<String> showDesc = new ArrayList<>();
 
-    RecyclerView rv;
+    static RecyclerView rv;
 
     static int dontLoad = 0;
 
@@ -77,6 +79,8 @@ public class MainActivity extends AppCompatActivity
         // Wee
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
+
+        AddTheData(); // Move this later.
     }
 
     @Override
@@ -87,6 +91,43 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void AddTheData() {
+
+        // This will push the names and such through to the adapter for the recyclerView.
+        showTitle.add("Test Title");
+        showUrl.add("http://www.google.com");
+        showPhoto.add("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0ozpHJ91Ap_kI3fMCqvUrO6W9xuTNtOSqsuouaettYJbOBGALXlk-D5wK3Q"); // Cat
+        showDesc.add("This is a test for the fish and the cat that says now and I don't want to be japan for english was last in first place. - Abraham Lincoln");
+
+        showTitle.add("Test Title 2");
+        showUrl.add("http://www.google.com");
+        showPhoto.add("https://upload.wikimedia.org/wikipedia/commons/1/1e/Large_Siamese_cat_tosses_a_mouse.jpg"); // Cat
+        showDesc.add("You're balls won't drop till you beat the door to live on the mooonooaalleeoasjdbj - Abraham Lincoln");
+
+        showFeed = new ArrayList<>();
+        showFeed.clear();
+        for (int i = 0; i < showTitle.size(); i++) {
+            //                        Should probably change these names
+            showFeed.add(new showData(showTitle.get(i), showUrl.get(i), showPhoto.get(i), showDesc.get(i)));
+
+            if (i == showTitle.size() - 1) {
+
+                //Log.d("Run", "Adapter Time");
+                initializeAdapter();
+            }
+        }
+    }
+
+
+    static public void initializeAdapter() {
+
+        showAdapter adapter = new showAdapter(showFeed);
+        SlideInLeftAnimationAdapter alphaAdapter = new SlideInLeftAnimationAdapter(adapter);
+        alphaAdapter.setDuration(250);
+        alphaAdapter.setFirstOnly(true);
+        rv.setAdapter(alphaAdapter);
     }
 
     @Override
