@@ -6,19 +6,30 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="5dp"
-    android:elevation="10dp">
+    android:elevation="10dp"
+    card_view:cardBackgroundColor="@color/whitesmoke"
+    card_view:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/showImage"
+            android:id="@+id/newsImage"
             android:layout_width="fill_parent"
             android:layout_height="225dp"
             android:scaleType="fitXY"
+            android:transitionName="MYTRANSITIONVIEW"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
+        <!-- <uk.co.senab.photoview.PhotoView
+             android:id="@+id/newsImage"
+             android:layout_width="fill_parent"
+             android:layout_height="225dp"
+             android:scaleType="fitXY"
+             android:transitionName="MYTRANSITIONVIEW"
+             android:layout_alignParentTop="true"
+             android:layout_alignParentStart="true" />-->
 
 
         <TextView
@@ -27,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="This is a title"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/showImage"
+            android:layout_below="@+id/newsImage"
             android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="#000"
@@ -64,7 +75,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text=""
             android:id="@+id/locationT"
-            android:layout_below="@+id/showImage"
+            android:layout_below="@+id/newsImage"
             android:layout_alignStart="@+id/textViewLine"
             android:visibility="gone" />
     </RelativeLayout>
