@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
                 //Snackbar.make(view, "\"Oh, now he's got a boner\"  - Dean Winchester", Snackbar.LENGTH_LONG)
                 //        .setAction("Action", null).show();
 
-                Toast.makeText(MainActivity.this, "\"Oh, now he's got a boner\"\nDean Winchester", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "\"Oh, now he's got a boner\"\n - Dean Winchester", Toast.LENGTH_SHORT).show();
             }
         });
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

@@ -27,7 +27,7 @@
         android:id="@+id/fabtwo"
         android:layout_width="55dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/cassqu"
+        android:src="@drawable/cassqu2"
         app:siBorderWidth="0dp"
         android:layout_margin="@dimen/fab_margin"
         android:layout_gravity="bottom|right"
