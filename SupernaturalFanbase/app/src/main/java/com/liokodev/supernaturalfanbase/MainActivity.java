@@ -3,6 +3,8 @@ package com.liokodev.supernaturalfanbase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,8 +18,21 @@ import android.widget.Toast;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    static ArrayList<showData> showFeed;
+
+    public static ArrayList<String> showTitle = new ArrayList<>();
+    public static ArrayList<String> showUrl = new ArrayList<>();
+    public static ArrayList<String> showPhoto = new ArrayList<>();
+    public static ArrayList<String> showDesc = new ArrayList<>();
+
+    RecyclerView rv;
+
+    static int dontLoad = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +68,15 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ///////////// Setting up cards ///////////////////////
+
+        rv = (RecyclerView) findViewById(R.id.ShowRV);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+
+        // Wee
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
     }
 
     @Override
