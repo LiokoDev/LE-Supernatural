@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.github.siyamed.shapeimageview.CircularImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,6 +26,16 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        CircularImageView fab = (CircularImageView) findViewById(R.id.fabtwo);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Snackbar.make(view, "\"Oh, now he's got a boner\"  - Dean Winchester", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
+
+                Toast.makeText(MainActivity.this, "\"Oh, now he's got a boner\"\nDean Winchester", Toast.LENGTH_SHORT).show();
+            }
+        });
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
