@@ -23,6 +23,14 @@
 
     <include layout="@layout/content_main" />
 
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cassqu"
+        app:siBorderWidth="6dp"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="bottom|right"
+        app:siBorderColor="@android:color/transparent"/>
 
     <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
