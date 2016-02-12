@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity
     public void AddTheData() {
 
         // This will push the names and such through to the adapter for the recyclerView.
-        showTitle.add("Test Title");
+        showTitle.add("Working Title 1");
         showUrl.add("http://www.google.com");
-        showPhoto.add("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0ozpHJ91Ap_kI3fMCqvUrO6W9xuTNtOSqsuouaettYJbOBGALXlk-D5wK3Q"); // Cat
-        showDesc.add("This is a test for the fish and the cat that says now and I don't want to be japan for english was last in first place. - Abraham Lincoln");
+        showPhoto.add("http://cdn3.whatculture.com/wp-content/uploads/2015/05/john-cena-heel-turn-600x300.jpg"); // John Cena
+        showDesc.add("You can't see me - John Cena");
 
         showTitle.add("Test Title 2");
         showUrl.add("http://www.google.com");
