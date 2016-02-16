@@ -74,7 +74,7 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
 
         Ion.with(ViewHolder.actImage)
                 //.smartSize(true)
-                .placeholder(R.drawable.deanboned)
+                .placeholder(R.drawable.loader)
                 //.error(R.drawable.error)
                 .load(showFeed.get(i).sPhoto);
 

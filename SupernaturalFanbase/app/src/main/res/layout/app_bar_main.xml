@@ -23,7 +23,7 @@
 
     <include layout="@layout/content_main" />
 
-    <com.github.siyamed.shapeimageview.CircularImageView
+    <!--<com.github.siyamed.shapeimageview.CircularImageView
         android:id="@+id/fabtwo"
         android:layout_width="55dp"
         android:layout_height="wrap_content"
@@ -31,23 +31,23 @@
         app:siBorderWidth="0dp"
         android:layout_margin="@dimen/fab_margin"
         android:layout_gravity="bottom|right"
-        app:siBorderColor="@android:color/transparent"/>
+        app:siBorderColor="@android:color/transparent"/>-->
 
-    <!--<android.support.design.widget.FloatingActionButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/cassqu"
+        android:src="@drawable/cassqu2"
         android:background="@drawable/fab"
         android:layout_margin="@dimen/fab_margin"
         android:layout_gravity="bottom|right"
-        android:scaleX="2.75"
-        android:scaleY="2.75"
+        android:scaleX="1"
+        android:scaleY="1"
         app:fabSize="normal"
         app:backgroundTint="@android:color/transparent"
-        app:rippleColor="@android:color/transparent"
+        app:rippleColor="@color/trany"
         app:borderWidth="0dp"
         app:elevation="0dp"
-        app:pressedTranslationZ="12dp"/>-->
+        app:pressedTranslationZ="12dp"/>
 
 </android.support.design.widget.CoordinatorLayout>

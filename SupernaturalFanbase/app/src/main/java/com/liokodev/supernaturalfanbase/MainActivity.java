@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        CircularImageView fab = (CircularImageView) findViewById(R.id.fabtwo);
+        /*CircularImageView fab = (CircularImageView) findViewById(R.id.fabtwo);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,15 +52,16 @@ public class MainActivity extends AppCompatActivity
 
                 Toast.makeText(MainActivity.this, "\"Oh, now he's got a boner\"\n - Dean Winchester", Toast.LENGTH_SHORT).show();
             }
-        });
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        });*/
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "\"Oh, now he's got a boner\"  - Dean Winchester", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,13 +99,19 @@ public class MainActivity extends AppCompatActivity
         // This will push the names and such through to the adapter for the recyclerView.
         showTitle.add("Working Title 1");
         showUrl.add("http://www.google.com");
-        showPhoto.add("http://cdn3.whatculture.com/wp-content/uploads/2015/05/john-cena-heel-turn-600x300.jpg"); // John Cena
-        showDesc.add("You can't see me - John Cena");
+        showPhoto.add("http://images6.fanpop.com/image/photos/37100000/Sam-sam-winchester-37167329-1920-1080.jpg"); // Sam Winchester
+        showDesc.add("Sam Winchester");
 
         showTitle.add("Test Title 2");
         showUrl.add("http://www.google.com");
-        showPhoto.add("https://upload.wikimedia.org/wikipedia/commons/1/1e/Large_Siamese_cat_tosses_a_mouse.jpg"); // Cat
-        showDesc.add("You're balls won't drop till you beat the door to live on the mooonooaalleeoasjdbj - Abraham Lincoln");
+        showPhoto.add("http://thumbs2.modthesims2.com/img/7/0/4/4/5/2/3/MTS_piggypeach-1402387-DEAN3.jpg"); // Dean Winchester
+        showDesc.add("Dean Winchester");
+
+        showTitle.add("Test Title 2");
+        showUrl.add("http://www.google.com");
+        showPhoto.add("http://cdn.playbuzz.com/cdn/38f1afba-f2a9-438a-8fd7-c2d296789251/56214f0e-2bb3-498d-b449-b63b149002d0.jpg"); // Castiel
+        showDesc.add("Castiel");
+
 
         showFeed = new ArrayList<>();
         showFeed.clear();
