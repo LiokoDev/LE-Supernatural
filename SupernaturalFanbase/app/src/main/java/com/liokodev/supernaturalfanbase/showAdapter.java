@@ -30,7 +30,7 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
 
             actImage = (ImageView)itemView.findViewById(R.id.newsImage); // Need to change the name
             tTitle = (TextView)itemView.findViewById(R.id.TitleT); //
-            tDesc = (TextView)itemView.findViewById(R.id.DescT); //
+            //tDesc = (TextView)itemView.findViewById(R.id.DescT); //
             tUrl = (TextView)itemView.findViewById(R.id.photoUrl); // So we know what to parse.
 
 
@@ -69,7 +69,7 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder ViewHolder, int i) {
 
         ViewHolder.tTitle.setText(showFeed.get(i).sName);
-        ViewHolder.tDesc.setText(showFeed.get(i).sShortDesc);
+        //ViewHolder.tDesc.setText(showFeed.get(i).sShortDesc);
         ViewHolder.tUrl.setText(showFeed.get(i).sUrl);
 
         Ion.with(ViewHolder.actImage)

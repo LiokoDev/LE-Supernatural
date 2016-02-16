@@ -16,10 +16,9 @@
 
         <ImageView
             android:id="@+id/newsImage"
-            android:layout_width="fill_parent"
-            android:layout_height="225dp"
-            android:scaleType="fitXY"
-            android:layout_alignParentTop="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:layout_alignParentStart="true" />
 
 
@@ -28,36 +27,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="This is a title"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/newsImage"
             android:textSize="20sp"
+            android:layout_alignBottom="@+id/newsImage"
+            android:layout_toEndOf="@+id/newsImage"
+            android:layout_alignParentTop="true"
+            android:padding="5dp"
             android:textAlignment="center"
-            android:paddingBottom="5dp" />
-
-        <TextView
-            android:id="@+id/DescT"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Sample text. Sample text. Sample text. Sample text. Sample text. Sample text. Sample text. Sample text. Sample text. Sample text. Sample text. "
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/textViewLine"
-            android:textSize="15sp"
-            android:textAlignment="center"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="5dp" />
-
-        <TextView
-            android:id="@+id/textViewLine"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:textSize="1dp"
-            android:textAlignment="center"
-            android:textColor="#000"
-            android:layout_below="@+id/TitleT"
-            android:layout_centerHorizontal="true"
-            android:background="#bcbcbc" />
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentBottom="false" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -67,7 +44,6 @@
             android:textColor="#000"
             android:id="@+id/photoUrl"
             android:layout_below="@+id/newsImage"
-            android:layout_alignStart="@+id/textViewLine"
             android:visibility="gone" />
     </RelativeLayout>
 
