@@ -1,5 +1,6 @@
 package com.liokodev.supernaturalfanbase;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.koushikdutta.ion.Ion;
 
@@ -23,6 +25,7 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
 
         ImageView actImage;
         TextView tTitle, tDesc, tUrl;
+        CardView card_view;
 
         ViewHolder(final View itemView) {
             super(itemView);
@@ -32,6 +35,15 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
             tTitle = (TextView)itemView.findViewById(R.id.TitleT); //
             //tDesc = (TextView)itemView.findViewById(R.id.DescT); //
             tUrl = (TextView)itemView.findViewById(R.id.photoUrl); // So we know what to parse.
+            card_view = (CardView)itemView.findViewById(R.id.card_view);
+
+
+            card_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MainActivity.thisContext, tUrl.getText(), Toast.LENGTH_LONG).show();
+                }
+            });
 
 
         }

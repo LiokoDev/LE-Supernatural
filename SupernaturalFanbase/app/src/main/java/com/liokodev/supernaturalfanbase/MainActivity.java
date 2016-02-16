@@ -1,5 +1,6 @@
 package com.liokodev.supernaturalfanbase;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,12 +37,16 @@ public class MainActivity extends AppCompatActivity
 
     static int dontLoad = 0;
 
+    static Context thisContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        thisContext = this;
 
         /*CircularImageView fab = (CircularImageView) findViewById(R.id.fabtwo);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -98,17 +103,17 @@ public class MainActivity extends AppCompatActivity
 
         // This will push the names and such through to the adapter for the recyclerView.
         showTitle.add("Mista Sam Winchester");
-        showUrl.add("http://www.google.com");
+        showUrl.add("http://www.google.com 1");
         showPhoto.add("http://images6.fanpop.com/image/photos/37100000/Sam-sam-winchester-37167329-1920-1080.jpg"); // Sam Winchester
         showDesc.add("Sam Winchester");
 
         showTitle.add("Mista Dean Winchester");
-        showUrl.add("http://www.google.com");
+        showUrl.add("http://www.google.com 2");
         showPhoto.add("http://thumbs2.modthesims2.com/img/7/0/4/4/5/2/3/MTS_piggypeach-1402387-DEAN3.jpg"); // Dean Winchester
         showDesc.add("Dean Winchester");
 
         showTitle.add("Our Lord and Savior");
-        showUrl.add("http://www.google.com");
+        showUrl.add("http://www.google.com 3");
         showPhoto.add("http://cdn.playbuzz.com/cdn/38f1afba-f2a9-438a-8fd7-c2d296789251/56214f0e-2bb3-498d-b449-b63b149002d0.jpg"); // Castiel
         showDesc.add("Castiel");
 
@@ -116,7 +121,7 @@ public class MainActivity extends AppCompatActivity
         showFeed = new ArrayList<>();
         showFeed.clear();
         for (int i = 0; i < showTitle.size(); i++) {
-            //                        Should probably change these names
+            //                        Should probably change these names -->>>>> Probs Faggot
             showFeed.add(new showData(showTitle.get(i), showUrl.get(i), showPhoto.get(i), showDesc.get(i)));
 
             if (i == showTitle.size() - 1) {
@@ -162,18 +167,24 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle The Following Nav Buttons
         int id = item.getItemId();
 
+        // The Cast Menu
         if (id == R.id.Cast) {
-            // Handle the camera action
+
+            //The History of the Show Tab
         } else if (id == R.id.History) {
+            //Pictures of the Show
 
         } else if (id == R.id.Pics) {
+            //The plot Lines of Each Episode
 
         } else if (id == R.id.Plots) {
 
+
         } else if (id == R.id.nav_share) {
+
 
         } else if (id == R.id.nav_send) {
 
