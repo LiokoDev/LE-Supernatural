@@ -101,7 +101,7 @@ public class PersonPage extends AppCompatActivity {
 
                  */
 
-                p = Pattern.compile("<h4 class=\"li_group\">Mini Bio(1) </h4>(.*?)</em></p>");
+                p = Pattern.compile("<h4 class="li_group">Mini Bio (1)</h4>(.*?)</em></p>");
                 m = p.matcher(splitResult[0]);
 
                 while (m.find()) {
