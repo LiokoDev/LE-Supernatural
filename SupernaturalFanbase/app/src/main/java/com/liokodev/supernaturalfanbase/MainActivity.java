@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity
 
     static RecyclerView rv;
 
-    static int dontLoad = 0;
+    static int dontLoad = 10;
+
+    static String selectedPerson;
 
     static Context thisContext;
 
@@ -103,17 +105,17 @@ public class MainActivity extends AppCompatActivity
 
         // This will push the names and such through to the adapter for the recyclerView.
         showTitle.add("Mista Sam Winchester");
-        showUrl.add("http://www.google.com 1");
+        showUrl.add("http://www.imdb.com/name/nm0655585/bio?ref_=nm_ov_bio_sm");
         showPhoto.add("http://images6.fanpop.com/image/photos/37100000/Sam-sam-winchester-37167329-1920-1080.jpg"); // Sam Winchester
         showDesc.add("Sam Winchester");
 
         showTitle.add("Mista Dean Winchester");
-        showUrl.add("http://www.google.com 2");
+        showUrl.add("http://www.imdb.com/name/nm0010075/bio?ref_=nm_ov_bio_sm");
         showPhoto.add("http://thumbs2.modthesims2.com/img/7/0/4/4/5/2/3/MTS_piggypeach-1402387-DEAN3.jpg"); // Dean Winchester
         showDesc.add("Dean Winchester");
 
         showTitle.add("Our Lord and Savior");
-        showUrl.add("http://www.google.com 3");
+        showUrl.add("http://www.imdb.com/name/nm0172557/bio?ref_=nm_ov_bio_sm");
         showPhoto.add("http://cdn.playbuzz.com/cdn/38f1afba-f2a9-438a-8fd7-c2d296789251/56214f0e-2bb3-498d-b449-b63b149002d0.jpg"); // Castiel
         showDesc.add("Castiel");
 

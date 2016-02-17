@@ -1,5 +1,6 @@
 package com.liokodev.supernaturalfanbase;
 
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,7 +42,12 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
             card_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(MainActivity.thisContext, tUrl.getText(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainActivity.thisContext, tUrl.getText(), Toast.LENGTH_LONG).show();
+
+                    MainActivity.selectedPerson = tUrl.getText().toString(); // Sets the download url to the string
+
+                    Intent i = new Intent(MainActivity.thisContext.getApplicationContext(), PersonPage.class);
+                    MainActivity.thisContext.startActivity(i);
                 }
             });
 
@@ -66,13 +72,13 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.showcard, viewGroup, false);
         ViewHolder vh = new ViewHolder(v);
 
-        if (MainActivity.dontLoad == 0) {
+        if (MainActivity.dontLoad > 0) {
             //Load the animation from the xml file and set it to the row
             Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.push_in);
 
             animation.setDuration(390);
             v.startAnimation(animation);
-            MainActivity.dontLoad = 1;
+            MainActivity.dontLoad -= 1;
         }
         return vh;
     }
