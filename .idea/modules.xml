@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SupernaturalFanbase.iml" filepath="$PROJECT_DIR$/SupernaturalFanbase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LE-Supernatural.iml" filepath="$PROJECT_DIR$/LE-Supernatural.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

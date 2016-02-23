@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //thisContext = this;
+        thisContext = this;
 
         /*CircularImageView fab = (CircularImageView) findViewById(R.id.fabtwo);
         fab.setOnClickListener(new View.OnClickListener() {
