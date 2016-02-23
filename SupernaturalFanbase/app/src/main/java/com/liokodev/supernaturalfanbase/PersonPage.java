@@ -77,6 +77,14 @@ public class PersonPage extends AppCompatActivity {
             super.onPostExecute(result);
             Log.i("INFO", "Almost done!");
 
+            String[] lines = result.split(System.getProperty("line.separator"));
+
+            for(int i = 0; i < lines.length;i++){
+                if (i == 740)
+                    Log.d("Trees with legs", lines[i]);
+
+            }
+
 
             try {
 
@@ -101,7 +109,8 @@ public class PersonPage extends AppCompatActivity {
 
                  */
 
-                p = Pattern.compile("<h4 class="li_group">Mini Bio (1)</h4>(.*?)</em></p>");
+
+                p = Pattern.compile("<h4 class=\"li_group\">Mini Bio (1)</h4>(.*?)</em></p>");
                 m = p.matcher(splitResult[0]);
 
                 while (m.find()) {
