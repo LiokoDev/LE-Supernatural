@@ -80,7 +80,7 @@ public class PersonPage extends AppCompatActivity {
             String[] lines = result.split(System.getProperty("line.separator"));
 
             for(int i = 0; i < lines.length;i++){
-                if (i == 740)
+                if (i == 740 || i == 741 || i == 742)
                     Log.d("Trees with legs", lines[i]);
 
             }
