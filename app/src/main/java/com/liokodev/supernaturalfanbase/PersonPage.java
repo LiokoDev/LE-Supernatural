@@ -6,9 +6,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,7 +24,8 @@ import java.util.regex.Pattern;
 public class PersonPage extends AppCompatActivity {
 
     ProgressBar loadingP;
-    Toolbar toolbar;
+    ScrollView scrollView;
+    TextView tempText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +35,22 @@ public class PersonPage extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         loadingP = (ProgressBar) findViewById(R.id.loadingPage);
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
+        tempText = (TextView) findViewById(R.id.tempText);
 
+        loadingP.setVisibility(View.VISIBLE);
+        scrollView.setVisibility(View.GONE);
 
+        // This creates the back arrow ( R.drawable...)
+        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        // This sets the action when it is pressed.
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(PersonPage.this, "Kevin is a butt.", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setVisibility(View.GONE); // hiding it for now
@@ -77,18 +96,10 @@ public class PersonPage extends AppCompatActivity {
             super.onPostExecute(result);
             Log.i("INFO", "Almost done!");
 
-            String[] lines = result.split(System.getProperty("line.separator"));
-
-            for(int i = 0; i < lines.length;i++){
-                if (i == 740 || i == 741 || i == 742)
-                    Log.d("Trees with legs", lines[i]);
-
-            }
-
-
             try {
 
-                String[] splitResult = result.split("(.*?)</html>"); // We can change this to cut up the web page.
+                // Might want to just save the name from the onClick so the Title doesn't have to load.
+                String[] splitResult = result.split("<html(.*?)/html>"); // We can change this to cut up the web page.
 
                 Pattern p = Pattern.compile("<title>(.*?) - Biography - IMDb</title>", Pattern.MULTILINE); // Title
                 Matcher m = p.matcher(splitResult[0]);
@@ -100,23 +111,20 @@ public class PersonPage extends AppCompatActivity {
 
                 }
 
-                /*
+                //Log.d("INFO", String.valueOf(result.contains("<h4 class=\"li_group\">Mini Bio (1)</h4>"))); // TRUE!
+                Integer test1 = result.indexOf("<h4 class=\"li_group\">Mini Bio (1)</h4>"), // Find index location of string
+                        test2 = result.indexOf("</a> </em></p>");
+                Log.d("INFO", String.valueOf(test1) + " " + String.valueOf(test2));
 
-                    I might be doing something stupid for the part below.
-                    It isn't working and I am blanking as to why...
+                String message = "";
 
-                    Time for raid. 
-
-                 */
-
-
-                p = Pattern.compile("<h4 class=\"li_group\">Mini Bio (1)</h4>(.*?)</em></p>");
-                m = p.matcher(splitResult[0]);
-
-                while (m.find()) {
-
-                    Log.d("Downloaded","Bio: " +  m.group(1));
-
+                // And this is how it shouldn't be done.
+                for(int i = test1; i < test2; i++) {
+                    message+=result.charAt(i); // Add each char one at a time to message.
+                    if (test2 - 1 == i) {
+                        //Log.d("INFO", message);
+                        tempText.setText(Html.fromHtml(message));
+                    }
                 }
 
 
@@ -127,7 +135,7 @@ public class PersonPage extends AppCompatActivity {
             }
 
             loadingP.setVisibility(View.GONE);
-
+            scrollView.setVisibility(View.VISIBLE);
 
 
         }
