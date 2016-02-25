@@ -113,46 +113,43 @@ public class PersonPage extends AppCompatActivity {
 
                 //Log.d("INFO", String.valueOf(result.contains("<h4 class=\"li_group\">Mini Bio (1)</h4>"))); // TRUE!
                 Integer test1 = result.indexOf("<h4 class=\"li_group\">Mini Bio (1)</h4>"), // Find index location of string
-                        test2 = result.lastIndexOf("<br />"),
+                        test2 = result.indexOf("</a>\n          </em></p>"),
                         ORTest = result.indexOf("<a name=\"quotes\">"),
-                        SpouseTest = result.lastIndexOf("<br />\n" + "          </p>");
+                        SpouseTest = result.indexOf("<a name=\"spouse\"></a>");
                 //Log.d("INFO", String.valueOf(test1) + " " + String.valueOf(test2));
-                Log.d("Test1", String.valueOf(test1) + " " + String.valueOf(test2));
-                Log.d("Test1", String.valueOf(test1) + " " + String.valueOf(ORTest));
+                Log.d("Test of Tests Part 1", String.valueOf(test1) + " " + String.valueOf(test2));
+                Log.d("Test of Tests Part 2", String.valueOf(test1) + " " + String.valueOf(ORTest));
+                Log.d("Test of Tests Part 3", String.valueOf(test1) + " " + String.valueOf(SpouseTest));
 
+                String message = "";
 
-                if (result.indexOf(test2) != -1) {
-                    String message = result.substring(test1, test2);
-                    tempText.setText(Html.fromHtml(message));
-                } else if (result.indexOf(ORTest) != -1){
-                    String message = result.substring(test1, ORTest);
-                    tempText.setText(Html.fromHtml(message));
+                Integer fuck1 = 0, fuck2 = 0;
 
+                if (test2 > test1) {
+                    fuck1 = test1;
+                    fuck2 = test2;
+                    Log.d("INFO", "Test 2 was bigger");
+
+                } else if (ORTest > test1) {
+                    fuck1 = test1;
+                    fuck2 = ORTest;
+                    Log.d("INFO", "ORTest was bigger");
+                } else if (SpouseTest > test1) {
+                    fuck1 = test1;
+                    fuck2 = SpouseTest;
+                    Log.d("INFO", "SpouseTest was bigger");
                 }
 
+                Log.d("INFO", fuck1 + " " + fuck2);
 
-
-               /* if (result.indexOf(ORTest) != -1) {
-;
-                }else{
-                    String message = result.substring(test1, SpouseTest);
-                    tempText.setText(Html.fromHtml(message));
-                }
-
-
-                String message = result.substring(test1,test2);
-                tempText.setText(Html.fromHtml(message));
-
-                /*
                 // And this is how it shouldn't be done.
-                for(int i = test1; i < test2; i++) {
-                    message+=result.charAt(i); // Add each char one at a time to message.
-                    if (test2 - 1 == i) {
+                for (int i = fuck1; i < fuck2; i++) {
+                    message += result.charAt(i); // Add each char one at a time to message.
+                    if (fuck2 - 1 == i) {
                         //Log.d("INFO", message);
                         tempText.setText(Html.fromHtml(message));
                     }
                 }
-                */
 
 
             } catch (Exception e) {
