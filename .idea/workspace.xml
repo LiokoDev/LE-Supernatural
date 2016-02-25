@@ -52,8 +52,8 @@
       <file leaf-file-name="PersonPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/liokodev/supernaturalfanbase/PersonPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5095057">
-              <caret line="143" column="54" selection-start-line="143" selection-start-column="54" selection-end-line="143" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.72243345">
+              <caret line="142" column="86" selection-start-line="142" selection-start-column="86" selection-end-line="142" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -1720,7 +1720,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHub/PortableGit_c7e0cbde92ba565cb218a521411d0e854079a28c/mingw32/libexec/git-core/git.exe" />
     <property name="device.picker.selection" value="84B7N15A10010238" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/sdk" />
-    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.last.selected" value="Notifications" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -2238,8 +2238,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/liokodev/supernaturalfanbase/PersonPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5095057">
-          <caret line="143" column="54" selection-start-line="143" selection-start-column="54" selection-end-line="143" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.72243345">
+          <caret line="142" column="86" selection-start-line="142" selection-start-column="86" selection-end-line="142" selection-end-column="86" />
           <folding />
         </state>
       </provider>

@@ -140,8 +140,16 @@ public class PersonPage extends AppCompatActivity {
                     Log.d("INFO", "SpouseTest was bigger");
                 }
 
+                if (ORTest > 0 && SpouseTest > 0) { // Makes sure it only gets the Bio
+                    if (ORTest > SpouseTest) {
+                        fuck2 = SpouseTest;
+                    } else {
+                        fuck2 = ORTest;
+                    }
+                }
+
                 Log.d("INFO", fuck1 + " " + fuck2);
-                message=result.substring(fuck1,fuck2);
+                message = result.substring(fuck1, fuck2);
                 tempText.setText(Html.fromHtml(message));
 
                 /*
