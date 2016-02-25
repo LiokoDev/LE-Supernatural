@@ -141,7 +141,10 @@ public class PersonPage extends AppCompatActivity {
                 }
 
                 Log.d("INFO", fuck1 + " " + fuck2);
+                message=result.substring(fuck1,fuck2);
+                tempText.setText(Html.fromHtml(message));
 
+                /*
                 // And this is how it shouldn't be done.
                 for (int i = fuck1; i < fuck2; i++) {
                     message += result.charAt(i); // Add each char one at a time to message.
@@ -150,6 +153,7 @@ public class PersonPage extends AppCompatActivity {
                         tempText.setText(Html.fromHtml(message));
                     }
                 }
+                */
 
 
             } catch (Exception e) {
