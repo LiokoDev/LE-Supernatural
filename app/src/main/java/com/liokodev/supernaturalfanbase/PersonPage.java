@@ -113,20 +113,35 @@ public class PersonPage extends AppCompatActivity {
 
                 //Log.d("INFO", String.valueOf(result.contains("<h4 class=\"li_group\">Mini Bio (1)</h4>"))); // TRUE!
                 Integer test1 = result.indexOf("<h4 class=\"li_group\">Mini Bio (1)</h4>"), // Find index location of string
-                        test2 = result.indexOf("<p><em>"),
-                        ORTest = result.indexOf("<a name=\"quotes\">");
-                Log.d("INFO", String.valueOf(test1) + " " + String.valueOf(test2));
+                        test2 = result.lastIndexOf("<br />"),
+                        ORTest = result.indexOf("<a name=\"quotes\">"),
+                        SpouseTest = result.lastIndexOf("<br />\n" + "          </p>");
+                //Log.d("INFO", String.valueOf(test1) + " " + String.valueOf(test2));
+                Log.d("Test1", String.valueOf(test1) + " " + String.valueOf(test2));
+                Log.d("Test1", String.valueOf(test1) + " " + String.valueOf(ORTest));
+
 
                 if (result.indexOf(test2) != -1) {
                     String message = result.substring(test1, test2);
                     tempText.setText(Html.fromHtml(message));
-                } else {
+                } else if (result.indexOf(ORTest) != -1){
                     String message = result.substring(test1, ORTest);
+                    tempText.setText(Html.fromHtml(message));
+
+                }
+
+
+
+               /* if (result.indexOf(ORTest) != -1) {
+;
+                }else{
+                    String message = result.substring(test1, SpouseTest);
                     tempText.setText(Html.fromHtml(message));
                 }
 
-                //String message = result.substring(test1,test2);
-                //tempText.setText(Html.fromHtml(message));
+
+                String message = result.substring(test1,test2);
+                tempText.setText(Html.fromHtml(message));
 
                 /*
                 // And this is how it shouldn't be done.
