@@ -116,8 +116,10 @@ public class PersonPage extends AppCompatActivity {
                         test2 = result.indexOf("</a> </em></p>");
                 Log.d("INFO", String.valueOf(test1) + " " + String.valueOf(test2));
 
-                String message = "";
+                String message = result.substring(test1,test2);
+                tempText.setText(Html.fromHtml(message));
 
+                /*
                 // And this is how it shouldn't be done.
                 for(int i = test1; i < test2; i++) {
                     message+=result.charAt(i); // Add each char one at a time to message.
@@ -126,6 +128,7 @@ public class PersonPage extends AppCompatActivity {
                         tempText.setText(Html.fromHtml(message));
                     }
                 }
+                */
 
 
             } catch (Exception e) {
