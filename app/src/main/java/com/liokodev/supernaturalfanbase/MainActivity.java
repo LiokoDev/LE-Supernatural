@@ -3,21 +3,18 @@ package com.liokodev.supernaturalfanbase;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.github.siyamed.shapeimageview.CircularImageView;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -26,20 +23,26 @@ import jp.wasabeef.recyclerview.animators.adapters.SlideInLeftAnimationAdapter;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    static ArrayList<showData> showFeed;
-
     public static ArrayList<String> showTitle = new ArrayList<>();
     public static ArrayList<String> showUrl = new ArrayList<>();
     public static ArrayList<String> showPhoto = new ArrayList<>();
     public static ArrayList<String> showDesc = new ArrayList<>();
-
+    static ArrayList<showData> showFeed;
     static RecyclerView rv;
 
     static int dontLoad = 10;
-
     static String selectedPerson;
-
     static Context thisContext;
+    int nope = 0;
+
+    static public void initializeAdapter() {
+
+        showAdapter adapter = new showAdapter(showFeed);
+        SlideInLeftAnimationAdapter alphaAdapter = new SlideInLeftAnimationAdapter(adapter);
+        alphaAdapter.setDuration(250);
+        alphaAdapter.setFirstOnly(true);
+        rv.setAdapter(alphaAdapter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +91,6 @@ public class MainActivity extends AppCompatActivity
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-        AddTheData(); // Move this later.
     }
 
     @Override
@@ -104,50 +106,73 @@ public class MainActivity extends AppCompatActivity
     public void AddTheData() {
 
         // This will push the names and such through to the adapter for the recyclerView.
-        showTitle.add("Sam Winchester");
-        showUrl.add("http://www.imdb.com/name/nm0655585/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://images6.fanpop.com/image/photos/37100000/Sam-sam-winchester-37167329-1920-1080.jpg"); // Sam Winchester
-        showDesc.add("Whiney");
+        //showFeed.clear();
 
-        showTitle.add("Dean Winchester");
-        showUrl.add("http://www.imdb.com/name/nm0010075/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://thumbs2.modthesims2.com/img/7/0/4/4/5/2/3/MTS_piggypeach-1402387-DEAN3.jpg"); // Dean Winchester
-        showDesc.add("Baller");
+        if (nope == 0) {
 
-        showTitle.add("Castiel");
-        showUrl.add("http://www.imdb.com/name/nm0172557/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://cdn.playbuzz.com/cdn/38f1afba-f2a9-438a-8fd7-c2d296789251/56214f0e-2bb3-498d-b449-b63b149002d0.jpg"); // Castiel
-        showDesc.add("Our Lord and Savior");
 
-        showTitle.add("Crowley");
-        showUrl.add("http://www.imdb.com/name/nm0791968/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("https://tribzap2it.files.wordpress.com/2014/12/crowley-mark-sheppard-supernatural.jpg"); // Crowley
-        showDesc.add("The King of Hell");
-
-        showTitle.add("Kevin Tran");
-        showUrl.add("http://www.imdb.com/name/nm1859543/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://www.sitcomsonline.com/photopost/data/2410/Sup14TaxiDriver.jpg"); // Kevin Tran
-        showDesc.add("Prophet");
-
-        showTitle.add("Bobby");
-        showUrl.add("http://www.imdb.com/name/nm0064769/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://www.supernaturalwiki.com/images/thumb/e/e6/Bobbydt.jpg/350px-Bobbydt.jpg"); // Bobby
-        showDesc.add("Master of trades Mista Bobby");
-
-        showTitle.add("John Winchester");
-        showUrl.add("http://www.imdb.com/name/nm0604742/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("https://upload.wikimedia.org/wikipedia/en/6/63/John_winchester.jpg"); // John Winchester
-        showDesc.add("Babby Daddy");
-
-        showTitle.add("Lucifer");
-        showUrl.add("http://www.imdb.com/name/nm0671032/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://www.supernaturalwiki.com/images/6/66/Supernatural-5x19-Hammer-of-the-gods-mark-pellegrino-16732531-1280-720.jpg"); // Lucifer
-        showDesc.add("God damn Satan up in here");
-
-        showTitle.add(" Metatron");
-        showUrl.add("http://www.imdb.com/name/nm0035664/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://www.thewinchesterfamilybusiness.com/images/SeasonNine/MetaFiction/SPN_0023.jpg"); //  Metatron
-        showDesc.add("Asshole of Angels");
+            showTitle.add("Sam Winchester");
+            showUrl.add("http://www.imdb.com/name/nm0655585/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("http://images6.fanpop.com/image/photos/37100000/Sam-sam-winchester-37167329-1920-1080.jpg"); // Sam Winchester
+            showDesc.add("Whiney");
+            nope = 1;
+        }
+        if (nope == 1) {
+            showTitle.add("Dean Winchester");
+            showUrl.add("http://www.imdb.com/name/nm0010075/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("http://thumbs2.modthesims2.com/img/7/0/4/4/5/2/3/MTS_piggypeach-1402387-DEAN3.jpg"); // Dean Winchester
+            showDesc.add("Baller");
+            nope = 2;
+        }
+        if (nope == 2) {
+            showTitle.add("Castiel");
+            showUrl.add("http://www.imdb.com/name/nm0172557/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("http://cdn.playbuzz.com/cdn/38f1afba-f2a9-438a-8fd7-c2d296789251/56214f0e-2bb3-498d-b449-b63b149002d0.jpg"); // Castiel
+            showDesc.add("Our Lord and Savior");
+            nope = 3;
+        }
+        if (nope == 3) {
+            showTitle.add("Crowley");
+            showUrl.add("http://www.imdb.com/name/nm0791968/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("https://tribzap2it.files.wordpress.com/2014/12/crowley-mark-sheppard-supernatural.jpg"); // Crowley
+            showDesc.add("The King of Hell");
+            nope = 4;
+        }
+        if (nope == 4) {
+            showTitle.add("Kevin Tran");
+            showUrl.add("http://www.imdb.com/name/nm1859543/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("http://www.sitcomsonline.com/photopost/data/2410/Sup14TaxiDriver.jpg"); // Kevin Tran
+            showDesc.add("Prophet");
+            nope = 5;
+        }
+        if (nope == 5) {
+            showTitle.add("Bobby");
+            showUrl.add("http://www.imdb.com/name/nm0064769/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("http://www.supernaturalwiki.com/images/thumb/e/e6/Bobbydt.jpg/350px-Bobbydt.jpg"); // Bobby
+            showDesc.add("Master of trades Mista Bobby");
+            nope = 6;
+        }
+        if (nope == 6) {
+            showTitle.add("John Winchester");
+            showUrl.add("http://www.imdb.com/name/nm0604742/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("https://upload.wikimedia.org/wikipedia/en/6/63/John_winchester.jpg"); // John Winchester
+            showDesc.add("Babby Daddy");
+            nope = 7;
+        }
+        if (nope == 7) {
+            showTitle.add("Lucifer");
+            showUrl.add("http://www.imdb.com/name/nm0671032/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("http://www.supernaturalwiki.com/images/6/66/Supernatural-5x19-Hammer-of-the-gods-mark-pellegrino-16732531-1280-720.jpg"); // Lucifer
+            showDesc.add("God damn Satan up in here");
+            nope = 8;
+        }
+        if (nope == 8) {
+            showTitle.add(" Metatron");
+            showUrl.add("http://www.imdb.com/name/nm0035664/bio?ref_=nm_ov_bio_sm");
+            showPhoto.add("http://www.thewinchesterfamilybusiness.com/images/SeasonNine/MetaFiction/SPN_0023.jpg"); //  Metatron
+            showDesc.add("Asshole of Angels");
+            nope = 9;
+        }
 
         showFeed = new ArrayList<>();
         showFeed.clear();
@@ -161,16 +186,6 @@ public class MainActivity extends AppCompatActivity
                 initializeAdapter();
             }
         }
-    }
-
-
-    static public void initializeAdapter() {
-
-        showAdapter adapter = new showAdapter(showFeed);
-        SlideInLeftAnimationAdapter alphaAdapter = new SlideInLeftAnimationAdapter(adapter);
-        alphaAdapter.setDuration(250);
-        alphaAdapter.setFirstOnly(true);
-        rv.setAdapter(alphaAdapter);
     }
 
     @Override
@@ -203,6 +218,7 @@ public class MainActivity extends AppCompatActivity
 
         // The Cast Menu
         if (id == R.id.Cast) {
+            AddTheData(); // Move this later.
 
             //The History of the Show Tab
         } else if (id == R.id.History) {
