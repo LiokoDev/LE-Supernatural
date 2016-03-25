@@ -3,8 +3,10 @@ package com.liokodev.supernaturalfanbase;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,6 +26,8 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnMenuTabClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +36,9 @@ import jp.wasabeef.recyclerview.animators.adapters.SlideInLeftAnimationAdapter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private BottomBar mBottomBar;
+
 
     static ArrayList<showData> showFeed;
 
@@ -85,6 +92,60 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ///////////// Navigation /////////////////
+
+        mBottomBar = BottomBar.attach(this, savedInstanceState);
+        mBottomBar.setItemsFromMenu(R.menu.bottombar_menu, new OnMenuTabClickListener() {
+            @Override
+            public void onMenuTabSelected(@IdRes int menuItemId) {
+                // Button 1
+                if (menuItemId == R.id.barCast) {
+                    Toast.makeText(MainActivity.this, "barCast - First Time", Toast.LENGTH_SHORT).show();
+                }
+                // Button 2
+                if (menuItemId == R.id.barHistory) {
+                    Toast.makeText(MainActivity.this, "barHistory - First Time", Toast.LENGTH_SHORT).show();
+                }
+                // Button 3
+                if (menuItemId == R.id.barPics) {
+                    Toast.makeText(MainActivity.this, "barPics - First Time", Toast.LENGTH_SHORT).show();
+                }
+                // Button 4
+                if (menuItemId == R.id.barPlots) {
+                    Toast.makeText(MainActivity.this, "barPlots - First Time", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onMenuTabReSelected(@IdRes int menuItemId) {
+                // Button 1
+                if (menuItemId == R.id.barCast) {
+                    Toast.makeText(MainActivity.this, "barCast - Second Time", Toast.LENGTH_SHORT).show();
+                }
+                // Button 2
+                if (menuItemId == R.id.barHistory) {
+                    Toast.makeText(MainActivity.this, "barHistory - Second Time", Toast.LENGTH_SHORT).show();
+                }
+                // Button 3
+                if (menuItemId == R.id.barPics) {
+                    Toast.makeText(MainActivity.this, "barPics - Second Time", Toast.LENGTH_SHORT).show();
+                }
+                // Button 4
+                if (menuItemId == R.id.barPlots) {
+                    Toast.makeText(MainActivity.this, "barPlots - Second Time", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
+
+        // Setting colors for different tabs when there's more than three of them.
+        // You can set colors for tabs in three different ways as shown below.
+        mBottomBar.mapColorForTab(0, ContextCompat.getColor(this, R.color.colorAccent));
+        mBottomBar.mapColorForTab(1, 0xFF5D4037);
+        mBottomBar.mapColorForTab(2, "#7B1FA2");
+        mBottomBar.mapColorForTab(3, "#FF5252");
+        //mBottomBar.mapColorForTab(4, "#FF9800");
 
         ///////////// Setting up cards ///////////////////////
 
