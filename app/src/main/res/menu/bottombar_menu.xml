@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/barCast"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="Cast" />
+    <item
+        android:id="@+id/barHistory"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="History of the Show" />
+    <item
+        android:id="@+id/barPics"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="Pictures" />
+    <item
+        android:id="@+id/barPlots"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Plot Lines" />
+
+</menu>
