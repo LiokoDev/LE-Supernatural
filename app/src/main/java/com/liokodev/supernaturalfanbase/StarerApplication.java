@@ -5,14 +5,9 @@ package com.liokodev.supernaturalfanbase;
  */
 
 import android.app.Application;
-import android.util.Log;
-
 import com.parse.Parse;
 import com.parse.ParseACL;
-import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 
 public class StarerApplication extends Application {
@@ -31,20 +26,6 @@ public class StarerApplication extends Application {
                 .server("https://parseisonfire.herokuapp.com/parse/")
                 .build()
         );
-
-        ParseObject gameScore = new ParseObject("GameScore");
-        gameScore.put("score", 7331);
-        gameScore.put("playerName", "Jake");
-        gameScore.put("cheatMode", true);
-        gameScore.saveInBackground(new SaveCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    Log.i("Parse", "Save Succeeded");
-                } else {
-                    Log.i("Parse", "Save Failed");
-                }
-            }
-        });
 
 
         ParseUser.enableAutomaticUser();

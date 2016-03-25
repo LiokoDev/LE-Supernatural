@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,8 +19,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.adapters.SlideInLeftAnimationAdapter;
 
@@ -104,55 +110,56 @@ public class MainActivity extends AppCompatActivity
     public void AddTheData() {
 
         // This will push the names and such through to the adapter for the recyclerView.
-        showTitle.add("Sam Winchester");
-        showUrl.add("http://www.imdb.com/name/nm0655585/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://images6.fanpop.com/image/photos/37100000/Sam-sam-winchester-37167329-1920-1080.jpg"); // Sam Winchester
-        showDesc.add("Whiney");
 
-        showTitle.add("Dean Winchester");
-        showUrl.add("http://www.imdb.com/name/nm0010075/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://thumbs2.modthesims2.com/img/7/0/4/4/5/2/3/MTS_piggypeach-1402387-DEAN3.jpg"); // Dean Winchester
-        showDesc.add("Baller");
+        ParseQuery<ParseObject> queryCast = ParseQuery.getQuery("Supernatural");
+        queryCast.orderByAscending("Name");
+        queryCast.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> object, ParseException e) {
+                if (e == null) {
+                    for (int i = 0; i < object.size(); i++) {
+                        ParseObject objectT = object.get(i);
+                        // You can get a value of a Parse Object column with get:
 
-        showTitle.add("Castiel");
-        showUrl.add("http://www.imdb.com/name/nm0172557/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://cdn.playbuzz.com/cdn/38f1afba-f2a9-438a-8fd7-c2d296789251/56214f0e-2bb3-498d-b449-b63b149002d0.jpg"); // Castiel
-        showDesc.add("Our Lord and Savior");
+                        String myName = (String) objectT.get("Name");
+                        showTitle.add(myName);
+                        //Log.d("AddTheData", myName);
 
-        showTitle.add("Crowley");
-        showUrl.add("http://www.imdb.com/name/nm0791968/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("https://tribzap2it.files.wordpress.com/2014/12/crowley-mark-sheppard-supernatural.jpg"); // Crowley
-        showDesc.add("The King of Hell");
+                        String myIMDB = (String) objectT.get("IMDB");
+                        showUrl.add(myIMDB);
+                        //Log.d("AddTheData", myIMDB);
 
-        showTitle.add("Kevin Tran");
-        showUrl.add("http://www.imdb.com/name/nm1859543/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://www.sitcomsonline.com/photopost/data/2410/Sup14TaxiDriver.jpg"); // Kevin Tran
-        showDesc.add("Prophet");
+                        String myPhoto = (String) objectT.get("PhotoUrl");
+                        showPhoto.add(myPhoto);
+                        //Log.d("AddTheData", myPhoto);
 
-        showTitle.add("Bobby");
-        showUrl.add("http://www.imdb.com/name/nm0064769/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://www.supernaturalwiki.com/images/thumb/e/e6/Bobbydt.jpg/350px-Bobbydt.jpg"); // Bobby
-        showDesc.add("Master of trades Mista Bobby");
+                        String myDesc = (String) objectT.get("Desc");
+                        showDesc.add(myDesc);
+                        //Log.d("AddTheData", myDesc);
 
-        showTitle.add("John Winchester");
-        showUrl.add("http://www.imdb.com/name/nm0604742/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("https://upload.wikimedia.org/wikipedia/en/6/63/John_winchester.jpg"); // John Winchester
-        showDesc.add("Babby Daddy");
+                        //Log.d("INFO", String.valueOf(i) + " - " + object.size());
+                        Integer l = 0;
+                        l = i + 2;
 
-        showTitle.add("Lucifer");
-        showUrl.add("http://www.imdb.com/name/nm0671032/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://www.supernaturalwiki.com/images/6/66/Supernatural-5x19-Hammer-of-the-gods-mark-pellegrino-16732531-1280-720.jpg"); // Lucifer
-        showDesc.add("God damn Satan up in here");
+                        if (l > object.size()) {
+                            thefinalcountdown();
+                            Log.d("AddTheData", showTitle.size() + " " + showUrl.size() + " " +
+                                    showPhoto.size() + " " + showDesc.size());
+                        }
+                    }
 
-        showTitle.add(" Metatron");
-        showUrl.add("http://www.imdb.com/name/nm0035664/bio?ref_=nm_ov_bio_sm");
-        showPhoto.add("http://www.thewinchesterfamilybusiness.com/images/SeasonNine/MetaFiction/SPN_0023.jpg"); //  Metatron
-        showDesc.add("Asshole of Angels");
+                } else {
+                    Log.d("AddTheData", "Error: " + e.getMessage());
+                }
+            }
+        });
 
+    }
+
+    static public void thefinalcountdown() {
         showFeed = new ArrayList<>();
         showFeed.clear();
         for (int i = 0; i < showTitle.size(); i++) {
-            //                        Should probably change these names -->>>>> Probs Faggot
+            //
             showFeed.add(new showData(showTitle.get(i), showUrl.get(i), showPhoto.get(i), showDesc.get(i)));
 
             if (i == showTitle.size() - 1) {
