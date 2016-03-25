@@ -33,4 +33,5 @@ dependencies {
     compile 'com.commit451:PhotoView:1.2.4'
     compile 'me.zhanghai.android.customtabshelper:library:1.0.1'
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.parse:parse-android:1.13.0'
 }
