@@ -3,30 +3,32 @@ package com.liokodev.supernaturalfanbase;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.annotation.IdRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.OnMenuTabClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.adapters.SlideInLeftAnimationAdapter;
 
-public class MainTestActivity extends Activity {
-    private BottomBar mBottomBar;
+public class MainTestActivity extends AppCompatActivity {
+
+    //private BottomBar mBottomBar;
 
     static ArrayList<showData> showFeed;
 
@@ -48,59 +50,61 @@ public class MainTestActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_test);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("SuperNatural FanBase");
+
         ///////////// Navigation /////////////////
 
-        mBottomBar = BottomBar.attach(this, savedInstanceState);
-        mBottomBar.setItemsFromMenu(R.menu.bottombar_menu, new OnMenuTabClickListener() {
-            @Override
-            public void onMenuTabSelected(@IdRes int menuItemId) {
-                // Button 1
-                if (menuItemId == R.id.barCast) {
-                    Toast.makeText(MainTestActivity.this, "barCast - First Time", Toast.LENGTH_SHORT).show();
-                }
-                // Button 2
-                if (menuItemId == R.id.barHistory) {
-                    Toast.makeText(MainTestActivity.this, "barHistory - First Time", Toast.LENGTH_SHORT).show();
-                }
-                // Button 3
-                if (menuItemId == R.id.barPics) {
-                    Toast.makeText(MainTestActivity.this, "barPics - First Time", Toast.LENGTH_SHORT).show();
-                }
-                // Button 4
-                if (menuItemId == R.id.barPlots) {
-                    Toast.makeText(MainTestActivity.this, "barPlots - First Time", Toast.LENGTH_SHORT).show();
-                }
-            }
+        AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
 
-            @Override
-            public void onMenuTabReSelected(@IdRes int menuItemId) {
-                // Button 1
-                if (menuItemId == R.id.barCast) {
-                    Toast.makeText(MainTestActivity.this, "barCast - Second Time", Toast.LENGTH_SHORT).show();
-                }
-                // Button 2
-                if (menuItemId == R.id.barHistory) {
-                    Toast.makeText(MainTestActivity.this, "barHistory - Second Time", Toast.LENGTH_SHORT).show();
-                }
-                // Button 3
-                if (menuItemId == R.id.barPics) {
-                    Toast.makeText(MainTestActivity.this, "barPics - Second Time", Toast.LENGTH_SHORT).show();
-                }
-                // Button 4
-                if (menuItemId == R.id.barPlots) {
-                    Toast.makeText(MainTestActivity.this, "barPlots - Second Time", Toast.LENGTH_SHORT).show();
-                }
-            }
+        // Create items
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_menu_camera, R.color.color_tab_1);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.ic_menu_gallery, R.color.color_tab_2);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_3, R.drawable.ic_menu_manage, R.color.color_tab_3);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.tab_4, R.drawable.ic_menu_share, R.color.color_tab_4);
 
+        // Add items
+        bottomNavigation.addItem(item1);
+        bottomNavigation.addItem(item2);
+        bottomNavigation.addItem(item3);
+        bottomNavigation.addItem(item4);
+
+        // Set background color
+        bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
+
+        // Disable the translation inside the CoordinatorLayout
+        bottomNavigation.setBehaviorTranslationEnabled(false);
+
+        // Change colors
+        bottomNavigation.setAccentColor(Color.parseColor("#F63D2B"));
+        bottomNavigation.setInactiveColor(Color.parseColor("#747474"));
+
+        // Force to tint the drawable (useful for font with icon for example)
+        bottomNavigation.setForceTint(true);
+
+        // Force the titles to be displayed (against Material Design guidelines!)
+        bottomNavigation.setForceTitlesDisplay(true);
+
+        // Use colored navigation with circle reveal effect
+        bottomNavigation.setColored(true);
+
+        // Set current item programmatically
+        bottomNavigation.setCurrentItem(1);
+
+        // Customize notification (title, background, typeface)
+        bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
+
+        // Add or remove notification for each item
+        bottomNavigation.setNotification(4, 1);
+        bottomNavigation.setNotification(0, 1);
+
+        // Set listener
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position, boolean wasSelected) {
+                // Do something cool here...
+            }
         });
-
-        // Setting colors for different tabs when there's more than three of them.
-        // You can set colors for tabs in three different ways as shown below.
-        mBottomBar.mapColorForTab(0, ContextCompat.getColor(this, R.color.colorAccent));
-        mBottomBar.mapColorForTab(1, 0xFF5D4037);
-        mBottomBar.mapColorForTab(2, "#7B1FA2");
-        mBottomBar.mapColorForTab(3, "#FF5252");
-        //mBottomBar.mapColorForTab(4, "#FF9800");
 
         ///////////// Setting up cards ///////////////////////
 
@@ -114,14 +118,6 @@ public class MainTestActivity extends Activity {
         AddTheData(); // Move this later.
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        // Necessary to restore the BottomBar's state, otherwise we would
-        // lose the current tab on orientation change.
-        mBottomBar.onSaveInstanceState(outState);
-    }
 
     @Override
     public void onBackPressed() {

@@ -34,5 +34,5 @@ dependencies {
     compile 'me.zhanghai.android.customtabshelper:library:1.0.1'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.parse:parse-android:1.13.0'
-    compile 'com.roughike:bottom-bar:1.2.4'
+    compile 'com.aurelhubert:ahbottomnavigation:1.0.1'
 }
