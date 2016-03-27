@@ -5,12 +5,16 @@ package com.liokodev.supernaturalfanbase;
  */
 
 import android.app.Application;
+import android.content.Context;
+
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseUser;
 
 
 public class StarerApplication extends Application {
+
+    static Context thisContext;
 
     @Override
     public void onCreate() {

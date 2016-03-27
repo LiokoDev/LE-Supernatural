@@ -4,8 +4,10 @@
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#9E9E9E</color>
 
-    <color name="color_tab_1">#FF00FF</color>
-    <color name="color_tab_2">#800000</color>
+
+    // Bottoms tabs
+    <color name="color_tab_1">#2196F3</color>
+    <color name="color_tab_2">#FF8C00</color>
     <color name="color_tab_3">#2E8B57</color>
     <color name="color_tab_4">#4B0082</color>
 

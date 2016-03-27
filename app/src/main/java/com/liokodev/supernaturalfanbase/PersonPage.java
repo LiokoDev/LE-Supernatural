@@ -71,7 +71,7 @@ public class PersonPage extends AppCompatActivity {
         protected String doInBackground(String... urls) {
             String result;
             try {
-                Document doc = Jsoup.connect(MainActivity.selectedPerson).get();
+                Document doc = Jsoup.connect(MainTestActivity.selectedPerson).get();
 
                 //Log.d("Hmm1", String.valueOf(doc));
                 result = String.valueOf(doc);

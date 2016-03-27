@@ -1,8 +1,10 @@
 package com.liokodev.supernaturalfanbase;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.koushikdutta.ion.Ion;
 
@@ -44,10 +45,16 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
                 public void onClick(View v) {
                     //Toast.makeText(MainActivity.thisContext, tUrl.getText(), Toast.LENGTH_LONG).show();
 
-                    MainActivity.selectedPerson = tUrl.getText().toString(); // Sets the download url to the string
+                    //Log.d("Clickly", tUrl.getText().toString());
+                    MainTestActivity.selectedPerson = tUrl.getText().toString(); // Sets the download url to the string
 
-                    Intent i = new Intent(MainActivity.thisContext.getApplicationContext(), PersonPage.class);
-                    MainActivity.thisContext.startActivity(i);
+                    /*try {
+                        Intent i = new Intent(MainTestActivity.thisContext.getApplicationContext(), PersonPage.class);
+                        MainTestActivity.thisContext.startActivity(i);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }*/
+
                 }
             });
 
@@ -72,13 +79,13 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.showcard, viewGroup, false);
         ViewHolder vh = new ViewHolder(v);
 
-        if (MainActivity.dontLoad > 0) {
+        if (MainTestActivity.dontLoad > 0) {
             //Load the animation from the xml file and set it to the row
             Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.push_in);
 
             animation.setDuration(390);
             v.startAnimation(animation);
-            MainActivity.dontLoad -= 1;
+            MainTestActivity.dontLoad -= 1;
         }
         return vh;
     }
@@ -89,6 +96,22 @@ public class showAdapter extends RecyclerView.Adapter<showAdapter.ViewHolder> {
         ViewHolder.tTitle.setText(showFeed.get(i).sName);
         //ViewHolder.tDesc.setText(showFeed.get(i).sShortDesc);
         ViewHolder.tUrl.setText(showFeed.get(i).sUrl);
+
+        ViewHolder.card_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainTestActivity.selectedPerson = ViewHolder.tUrl.getText().toString(); // Sets the download url to the string
+
+                Log.d("Clickly2", ViewHolder.tUrl.getText().toString());
+
+                try {
+                    Intent q = new Intent(StarerApplication.thisContext.getApplicationContext(), PersonPage.class);
+                    StarerApplication.thisContext.startActivity(q);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         Ion.with(ViewHolder.actImage)
                 //.smartSize(true)

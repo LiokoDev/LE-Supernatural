@@ -3,8 +3,6 @@ package com.liokodev.supernaturalfanbase;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -89,7 +87,7 @@ public class MainTestActivity extends AppCompatActivity {
         bottomNavigation.setColored(true);
 
         // Set current item programmatically
-        bottomNavigation.setCurrentItem(1);
+        bottomNavigation.setCurrentItem(0);
 
         // Customize notification (title, background, typeface)
         bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
@@ -102,7 +100,7 @@ public class MainTestActivity extends AppCompatActivity {
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, boolean wasSelected) {
-                // Do something cool here...
+                Toast.makeText(MainTestActivity.this, "Position: " + position + " wasSelected: " + wasSelected, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -177,7 +175,7 @@ public class MainTestActivity extends AppCompatActivity {
 
     }
 
-    static public void thefinalcountdown() {
+    public void thefinalcountdown() {
         showFeed = new ArrayList<>();
         showFeed.clear();
         for (int i = 0; i < showTitle.size(); i++) {
@@ -193,7 +191,7 @@ public class MainTestActivity extends AppCompatActivity {
     }
 
 
-    static public void initializeAdapter() {
+    public void initializeAdapter() {
 
         showAdapter adapter = new showAdapter(showFeed);
         SlideInLeftAnimationAdapter alphaAdapter = new SlideInLeftAnimationAdapter(adapter);
